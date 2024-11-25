@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# scrolling top and bottom project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Creating the Reference:
+const bottomRef = useRef(null);
 
-## Available Scripts
+useRef(null) initializes bottomRef with null.
 
-In the project directory, you can run:
+After the component mounts, bottomRef.current will point to the div element it is assigned to.
 
-### `npm start`
+# Assigning the Reference:
+<div ref={bottomRef}></div>
+This div will be referenced by bottomRef. React will update bottomRef.
+current to point to this div after the component renders.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Scrolling to the Element:
+function handleScrollToBottom() {
+  if (bottomRef.current) {
+    bottomRef.current.scrollIntoView({ behavior: 'smooth' });
+  }
+}
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+When handleScrollToBottom is called, it checks if bottomRef.current is not null.
 
-### `npm test`
+If it points to the div, bottomRef.current.scrollIntoView({ behavior: 'smooth' }) is called.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The scrollIntoView method scrolls the div into the visible area with a smooth scrolling animation.
 
-### `npm run build`
+# summary to scroll bottom 
+const bottomRef = useRef(null);
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+function handleScrollToBottom() {
+  if (bottomRef.current) {
+    bottomRef.current.scrollIntoView({ behavior: 'smooth' });
+  }
+}
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+// In your render method/component return:
+<div ref={bottomRef}></div>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+# scrolling to the top
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  function handleScrollToTop(){
+    window.scrollTo({
+      top:0, left:0, behavior:'smooth'
+    })
+  }
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+  # Nov 25 2024 Dallas,tx
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  # Bisrat
